@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   const isOnline = useOnlineStatus();
+
+  const {loggedInUser} = useContext(UserContext)
 
   const login = () => {
     if (btnName == "Login") {
@@ -32,6 +35,9 @@ const Header = () => {
           <Link to="/contact">
             <li className="nav-list">Contact Us</li>
           </Link>
+          <Link to="/grocerry">
+            <li className="nav-list">Grocerry</li>
+          </Link>
           <Link to="/cart">
             <li className="nav-list">cart</li>
           </Link>
@@ -41,6 +47,7 @@ const Header = () => {
           <button className="filter-btn login-btn" onClick={login}>
             {btnName}
           </button>
+           <li className="nav-list">{loggedInUser}</li>
         </ul>
       </div>
     </div>

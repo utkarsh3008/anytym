@@ -12,7 +12,6 @@ const useFetchMenuData = (resId) => {
   const fetchData = async () => {
     const data = await fetch(MENU_API_URL + resId);
     const json = await data.json();
-
     // This map function written becacuse itemcards can be available in any cards
     // so here we are checking which card has itemcards and setting that cards into the setResMenuData
     setRestaurantMenuData(json.data);

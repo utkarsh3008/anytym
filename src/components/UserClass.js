@@ -1,5 +1,6 @@
 import React from "react";
 import { GITHUB_PROFILE_API } from "../utils/constants";
+import UserContext from "../utils/userContext";
 
 class UserClass extends React.Component {
   constructor(props) {
@@ -35,6 +36,11 @@ class UserClass extends React.Component {
 
     return (
       <div className="user-card">
+        <UserContext.Consumer>
+          {({loggedInUser}) => (
+            <h4 className="font-bold text-lg">{loggedInUser}</h4>
+          )}
+        </UserContext.Consumer>
         <h2>Class based component</h2>
         <img src={avatar_url}></img>
         <h2>Name: {name}</h2>
